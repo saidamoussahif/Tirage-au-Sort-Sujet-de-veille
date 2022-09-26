@@ -1,0 +1,26 @@
+*{
+    font-family: "quick sand";
+}
+.container{
+    background-color: rgb(250, 241, 255);
+}
+.container h4, h2{
+    color: rgb(98, 19, 167);
+}
+.container .random{
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #fff;
+    border: none;
+    outline: none;
+    background: rgb(68, 1, 99);
+    right: 2px;
+    top: 2px;
+    cursor: pointer;
+} .container .input-group-append .btn{
+    background: rgb(68, 1, 99);
+    color: white;
+    margin-left: 5px;
+    width: 100px;
+}
