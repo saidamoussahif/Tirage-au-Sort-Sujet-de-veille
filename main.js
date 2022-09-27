@@ -1,72 +1,55 @@
-
-
-
-
 let Names = [];
+let showNames = "";
+var id = 0;
+let Day = moment().format("YYYY-MM-DD");
+let display = document.getElementById("display");
+let countere = 1;
+
 function addStudentName() {
   let studentAdd = document.getElementById("studentInput").value;
-  if (studentAdd != "") {
-    Names.push(studentAdd);
-    showStudents();
+  Names.push(studentAdd);
+  var list = "";
+  for (let i = 0; i < Names.length; i++) {
+    list += Names[i] + "</br>";
   }
-  //  console.log(Names);
-}
-function showStudents() {
-  let showNames = "";
-  let counter = 0;
 
-  Names.forEach(
-    (name) =>
-      (showNames += `
-          <li class="list-group-item m-1">
-        <p class="display">${name}<span class="float-right">
-        <button value="${counter++}" onClick="removeName(this)" class="btn btn-danger">X</button></span></p></li>
-          `)
-  );
-  document.getElementById("display").innerHTML = showNames;
+  document.getElementById("results").innerHTML = list;
   document.getElementById("studentInput").value = null;
+  console.log(list);
 }
-function removeName(btnValue) {
-  Names.splice(parseInt(btnValue.value), 1);
-  showStudents();
-}
-//  ************************************
 function getName() {
-  let randomList = "";
-  let counter = 0;
   if (Names.length === 0) {
     return;
   }
   var random = Names[Math.floor(Math.random() * Names.length, 1)];
-  console.log(random);
-  Names.forEach(
-    (student) =>
-      (randomList += `
-        <li class="list-group-item m-5">
-      <div class="display">${student}<span class="float-right">
-      <button value="${counter++}" onClick="removeName(this)" class="btn btn-warning">X</button></span></div></li>
-        `)
-  );
-}
+  let day = skippingWekeend(Day, countere++);
+  let template = `
+  <li class="list-group-item m-5">
+<div class="display"> student: ${random} ==========> date:${day}</div></li>
+  `;
+  display.innerHTML += template;
 
-RandomList();
-// ******************************Affecter la date a chaque apprenant*********************************
-async function RandomList() {
-
-  try {
-    const response = await fetch("DateOff.json");
-    console.log(response.json())
-    return response.json();
-  } 
-  catch (err) {
-    console.log(err);
+  const randomList = showNames.indexOf(display.innerHTML);
+  Names.splice(randomList, 1);
+  console.log(Names);
+  for (let t = 0; t < Names.length; t++) {
+    let studentAdd = document.getElementById("studentInput").value;
+    var list = "";
+    for (let i = 0; i < Names.length; i++) {
+      list += Names[i] + "</br>";
+    }
+    document.getElementById("results").innerHTML = list;
   }
-
+  if (Names.length === 0) {
+    document.getElementById("results").innerHTML = "";
+  }
 }
-
-//*****************************Load and Print JSON*************************//
-
-
-// let data = 'saida';
-
-// console.log(JSON.stringify(data, null, 2));
+function skippingWekeend(date, days) {
+  let d = moment(new Date(date)).add(Math.floor(days / 5) * 7, "d");
+  let remaining = days % 5;
+  while (remaining) {
+    d.add(1, "d");
+    if (d.day() !== 0 && d.day() !== 6) remaining--;
+  }
+  return d.format("YYYY-MM-DD");
+}

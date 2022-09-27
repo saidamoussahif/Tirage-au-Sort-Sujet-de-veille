@@ -1,6 +1,6 @@
 {
-  "ListeHolidays": {
-    "DayOff": [
+  "ListeHolidays": 
+    [
       {
         "id": 1,
         "Day": 27,
@@ -325,4 +325,3 @@
 
     ]
   }
-}

@@ -11,6 +11,15 @@
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <title>RANDOM NAME GENERATOR</title>
   </head>
   <body>
@@ -22,8 +31,9 @@
           <span class="input-group-text"> Name that will be listed : </span>
         </div>
         <input type="text" class="form-control ml-5" id="studentInput" />
-        <div class="input-group-append ">
-          <button class="btn btn-dark " onClick="addStudentName()" type="button">
+        <input type="text" class="form-control ml-5" id="sujetInput" />
+        <div class="input-group-append">
+          <button class="btn btn-dark" onClick="addStudentName()" type="button">
             Add
           </button>
         </div>
@@ -35,11 +45,19 @@
       <!-- the list header -->
       <h2 class="mt-4">Name List</h2>
       <!-- the div that will contains all the names -->
-      <div id="display"></div>
+      <div id="display">
+        <p id="results"></p>
+      </div>
       <button class="random" onClick="getName()">GENERATE</button>
     </div>
     <!-- <input type="text" class="form-control" id="RandomList" /> -->
     <!-- <div id="listOfStudents"></div> -->
+    <div id="display" class="input-group mb-3">
+        <!-- <span class="input-group-text"></span>
+        <span  class="input-group-text"></span> -->
+      <div class="input-group-append">
+    </div>
+
 
     <script src="main.js"></script>
   </body>
